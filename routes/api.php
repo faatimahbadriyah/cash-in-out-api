@@ -13,6 +13,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('me', [MeController::class, '__invoke']);
 
     Route::prefix('cash')->group(function () {
+        Route::get('', [CashController::class, 'index']);
         Route::post('create', [CashController::class, 'store']);
     });
 });
