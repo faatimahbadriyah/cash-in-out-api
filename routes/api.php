@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
-
+use App\Http\Controllers\Auth\MeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Auth::loginUsingId(2);
+
 Auth::routes();
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('me', [MeController::class, '__invoke']);
 });
